@@ -1,35 +1,11 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/favicon.png" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Megan R. Kelley</title>
-	</head>
-	<body>
-		<h1>Megan R. Kelley</h1>
-		<h2>Planetary Astronomer & Archivist at the SETI Institute</h2>
-		<p>
-			<a href="https://www.linkedin.com/in/meganseritan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
-		</p>
-		<img src="/profile-photo.png" alt="Photo of a person against a white background." width="250" />
-
-		<style>
-  			body {
-    			max-width: 600px;
-    			margin: 0 auto;
-    			text-align: center;
-    			padding: 2rem;
-  			}
-  			img {
-    			display: block;
-    			margin: 0 auto;
-  			}
-		</style>
-
-	</body>
-</html>
+<Layout title="Megan R. Kelley">
+	<h1>Megan R. Kelley</h1>
+	<h2>Planetary Astronomer &amp; Archivist at the SETI Institute</h2>
+	<p>
+		<a href="https://www.linkedin.com/in/meganseritan/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+	</p>
+	<img src="/profile-photo.png" alt="Photo of a person against a white background." width="250" />
+</Layout>
