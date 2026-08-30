@@ -16,42 +16,42 @@ const { title, wide = false } = Astro.props;
 			<a href="/portfolio">Portfolio</a>
         </nav>
         <slot />
-        <style>
-            body {
-                max-width: 700px;
-                margin: 0 auto;
-                text-align: center;
-                padding: 2rem;
-                font-family: system-ui, sans-serif;
-                background-color: #faf8f2;
-            }
-            body.wide {
-                max-width: 1000px;
-            }
-            img {
-                display: block;
-                margin: 0 auto;
-            }
-            nav {
-                display: flex;
-                justify-content: center;
-                gap: 1.5rem;
-                padding-bottom: 1rem;
-                margin-bottom: 1.5rem;
-                border-bottom: 1px solid #ddd;
-            }
-            nav a {
-                text-decoration: none;
-                color: inherit;
-                font-weight: 600;
-            }
-            :global(a) {
-                color: #3393ae;
-                text-decoration: none;
-            }
-            :global(a:hover) {
-                text-decoration: underline;
-            }
-        </style>
+    <style>
+        body {
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+            font-family: system-ui, sans-serif;
+            background-color: #faf8f2;
+        }
+        body.wide {
+            max-width: 1000px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #ddd;
+        }
+        nav a {
+            text-decoration: none;
+            color: inherit;
+            font-weight: 600;
+        }
+        :global(a) {
+            color: #3393ae;
+            text-decoration: none;
+        }
+        :global(a:hover) {
+            text-decoration: underline;
+        }
+    </style>
     </body>
 </html>
