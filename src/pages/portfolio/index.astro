@@ -12,6 +12,7 @@ function getCoverImage(category: { folder: string; cover: string }) {
 ---
 <Layout title="Portfolio" wide>
     <h1>Portfolio</h1>
+    <p class="intro">In addition to my scientific interests, I am also interested in data visualization and art. Click on any of the categories below to see samples of my work.</p>
     {portfolio.map((supercategory) => (
         <div>
             <h2>{supercategory.supercategoryTitle}</h2>
@@ -33,6 +34,10 @@ function getCoverImage(category: { folder: string; cover: string }) {
 </Layout>
 
 <style>
+    .intro {
+        max-width: 600px;
+        margin: 0 auto 2.5rem;
+    }
     .category-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

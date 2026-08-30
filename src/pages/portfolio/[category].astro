@@ -1,0 +1,66 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { portfolio } from '../../data/portfolio.js';
+import type { ImageMetadata } from 'astro';
+
+export function getStaticPaths() {
+    const allCategories = portfolio.flatMap((supercategory) => supercategory.categories);
+    return allCategories.map((category) => ({
+        params: { category: category.slug },
+        props: { category },
+    }));
+}
+
+const { category } = Astro.props;
+
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/portfolio/**/*.png', { eager: true });
+
+const categoryImages = Object.keys(images)
+    .filter((path) => path.startsWith(`/src/assets/portfolio/${category.folder}/`))
+    .sort()
+    .map((path) => {
+        const filename = path.split('/').pop() ?? '';
+        const alt = filename.replace(/\.png$/, '').replace(/^\d+-/, '').replace(/-/g, ' ');
+        return { image: images[path].default, alt };
+    });
+---
+<Layout title={category.title} wide>
+    <p><a href="/portfolio">&larr; Back to portfolio</a></p>
+    <h1>{category.title}</h1>
+    {category.description && <p class="intro">{category.description}</p>}
+    <div class="gallery-grid">
+        {categoryImages.map(({ image, alt }) => (
+            <a href={image.src} target="_blank" rel="noopener noreferrer">
+                <img src={image.src} width={image.width} height={image.height} alt={alt} />
+            </a>
+        ))}
+    </div>
+</Layout>
+
+<style>
+    .intro {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+    }
+    .gallery-grid {
+        column-count: 1;
+        column-gap: 1.5rem;
+    }
+    @media (min-width: 640px) {
+        .gallery-grid {
+            column-count: 2;
+        }
+    }
+    .gallery-grid a {
+        display: block;
+        margin: 0 0 1.5rem;
+        break-inside: avoid;
+    }
+    .gallery-grid img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 8px;
+        margin: 0;
+    }
+</style>
